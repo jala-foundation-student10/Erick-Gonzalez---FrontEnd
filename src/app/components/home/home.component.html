@@ -1,28 +1,5 @@
 <h3>Contacts App</h3>
-<input type="search" >
-<button> </button>
-
-<br>
-<!-- <table class="table">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col" href="#" (click)="sort('values.login.username')" >Username</th>
-            <th scope="col" href="#" (click)="sort('values.name.first ')" >First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Location</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let values of user">
-            <th scope="row">{{ values.login.username}}</th>
-            <td>{{ values.name.first }}</td>
-            <td>{{ values.name.last }}</td>
-            <td>{{ values.email}}</td>
-            <td>{{ values.location.city}}, {{values.location.state}}</td>
-        </tr>
-    </tbody>
-</table> -->
+<input type="text"  placeholder="Type to filter the name column..." (keyup)="updateFilter($event)" />
 
 <ngx-datatable class="bootstrap" [rows]="user" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
   [rowHeight]="50" [scrollbarV]="false" [sorts]="[{prop: 'name', dir: 'desc'}]">
@@ -58,3 +35,25 @@
   </ngx-datatable-column>
 
 </ngx-datatable>
+
+<br>
+<!-- <table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col" href="#" (click)="sort('values.login.username')" >Username</th>
+            <th scope="col" href="#" (click)="sort('values.name.first ')" >First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let values of user">
+            <th scope="row">{{ values.login.username}}</th>
+            <td>{{ values.name.first }}</td>
+            <td>{{ values.name.last }}</td>
+            <td>{{ values.email}}</td>
+            <td>{{ values.location.city}}, {{values.location.state}}</td>
+        </tr>
+    </tbody>
+</table> -->

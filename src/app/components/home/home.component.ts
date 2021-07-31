@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { HomeServiceService } from 'src/app/services/home-service.service';
 import * as _ from 'lodash';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
+import { Target } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +13,9 @@ import * as _ from 'lodash';
 export class HomeComponent implements OnInit {
 
   user: any[] = []
-  private tipoOrden: string = "login.username";
-  // private _user: any[] = [];
+  temp: any[] = [];
+
+  @ViewChild(DatatableComponent) myFilterTable!: DatatableComponent;
 
   constructor(private service: HomeServiceService) { }
 
@@ -20,12 +23,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.listUsers();
-    this.users();
   }
 
   listUsers() {
     this.service.getUser().then((data: any) => {
       console.log(data);
+      this.temp = data.results;
       this.user = data.results;
     },  
     (error) => {
@@ -33,17 +36,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  
-  users() {
-    var data = _.sortBy(this.user, this.tipoOrden);
-    this.user = data;
-    console.log("users click");
-    return data
-  }
+  updateFilter(event: any) {
+    const val = event.target.value.toLowerCase();
 
-  sort(tipoOrden: string) {
-    this.tipoOrden = tipoOrden;
-    this.users();
-    console.log("click")
+    // filter our data
+    const temp = this.temp.filter(function (d) {
+      return d.login.username.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+
+    // update the rows
+    this.user = temp;
+    // Whenever the filter changes, always go back to the first page
+    this.myFilterTable.offset = 0;
   }
 }
