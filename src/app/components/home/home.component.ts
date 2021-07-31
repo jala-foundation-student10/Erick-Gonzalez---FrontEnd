@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { HomeServiceService } from 'src/app/services/home-service.service';
-import * as _ from 'lodash';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { Target } from '@angular/compiler';
 
@@ -12,7 +11,7 @@ import { Target } from '@angular/compiler';
 })
 export class HomeComponent implements OnInit {
 
-  user: any[] = []
+  user: User[] = []
   temp: any[] = [];
 
   @ViewChild(DatatableComponent) myFilterTable!: DatatableComponent;

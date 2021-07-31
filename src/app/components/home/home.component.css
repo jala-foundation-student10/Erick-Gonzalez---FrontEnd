@@ -1,0 +1,24 @@
+.search{
+    width: 500px;
+    height: auto;
+    margin: auto;
+    padding: auto;
+}
+
+:host ::ng-deep .ngx-datatable .datatable-body .datatable-scroll {
+    display: inherit;
+  }
+
+  .table-wrapper { 
+    flex: 1 1 auto;
+    min-width: 0;
+ } 
+
+ .flex-container {
+    display: flex; 
+    flex-direction: row;
+  }
+
+  .others-wrapper {
+    flex: 0 0 200px;
+  }
