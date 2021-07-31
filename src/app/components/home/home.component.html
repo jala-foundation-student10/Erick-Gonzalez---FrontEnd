@@ -1,0 +1,25 @@
+<h3>Contacts App</h3>
+<input type="search" >
+<button> </button>
+
+<br>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let values of user">
+            <th scope="row">{{ values.login.username}}</th>
+            <td>{{ values.name.first }}</td>
+            <td>{{ values.name.last }}</td>
+            <td>{{ values.email}}</td>
+            <td>{{ values.location.city}}, {{values.location.state}}</td>
+        </tr>
+    </tbody>
+</table>
