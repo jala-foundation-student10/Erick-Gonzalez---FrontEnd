@@ -3,11 +3,11 @@
 <button> </button>
 
 <br>
-<table class="table">
+<!-- <table class="table">
     <thead class="table-dark">
         <tr>
-            <th scope="col">Username</th>
-            <th scope="col">First Name</th>
+            <th scope="col" href="#" (click)="sort('values.login.username')" >Username</th>
+            <th scope="col" href="#" (click)="sort('values.name.first ')" >First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
             <th scope="col">Location</th>
@@ -22,4 +22,39 @@
             <td>{{ values.location.city}}, {{values.location.state}}</td>
         </tr>
     </tbody>
-</table>
+</table> -->
+
+<ngx-datatable class="bootstrap" [rows]="user" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+  [rowHeight]="50" [scrollbarV]="false" [sorts]="[{prop: 'name', dir: 'desc'}]">
+
+  <ngx-datatable-column name="Username" prop="login.username">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.login.username}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="First" prop="name.first">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.name.first}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Last" prop="name.last">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.name.last}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Email" prop="email">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.email}}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column name="Location" prop="location.city">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.location.city}}, {{row.location.state}}
+    </ng-template>
+  </ngx-datatable-column>
+
+</ngx-datatable>
